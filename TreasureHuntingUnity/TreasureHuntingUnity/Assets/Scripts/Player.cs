@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
 
     ObjectPool pool;
-
+    private Rigidbody playerRigidbody;
 
     [Header("Hero Movement")]
     public float speed = 10;
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         pool = ObjectPool.POOL;
+        playerRigidbody = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -33,10 +34,11 @@ public class Player : MonoBehaviour
     {
         float xAxis = Input.GetAxis("Horizontal");  //horizontal axis
         float yAxis = Input.GetAxis("Vertical");    //vertical axis
-        Vector3 pos = transform.position; //vector for position
-        pos.x += xAxis * speed * Time.deltaTime; //adjust x position
-        pos.y += yAxis * speed * Time.deltaTime; //adjusts y position
-        transform.position = pos; //updated position
+        Vector3 vel = playerRigidbody.velocity; //vector for position
+        vel.x += xAxis * speed * Time.deltaTime; //adjust x position
+        vel.y += yAxis * speed * Time.deltaTime;
+        playerRigidbody.velocity = vel;//adjusts y position
+         //updated position
         
         
         if (Input.GetKeyDown(KeyCode.Space))
