@@ -3,9 +3,9 @@
  * Created on: 4/20/2022
  * 
  * Last Edited By: Krieger
- * Last Edited On: 4/20/2022
+ * Last Edited On: 4/23/2022
  * 
- * Description: Tells the player what room to enter on colliding with this door
+ * Description: Tells the camera what room to enter on colliding with this door
  */
 
 using System.Collections;
@@ -14,17 +14,29 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public int room; //holds a reference to the index of the next room
+    public Room nextRoom; //holds a reference to the index of the next room
+
+    private FollowCam fc;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        fc = FollowCam.FOLLOWCAM;
     }
 
     // Update is called once per frame
-    public int getRoom()
+    public Room getRoom()
     {
-        return room;
+        return nextRoom;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject go = other.gameObject;
+        
+        if(go.tag == "Player" && nextRoom != null)
+        {
+            fc.ChangeRooms(nextRoom);
+        }
     }
 }
