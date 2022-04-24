@@ -3,8 +3,9 @@
  * Created on: 4/15/2022
  * 
  * Last Edited By: Krieger
- * Last Edited On: 4/15/2022
+ * Last Edited On: 4/23/2022
  * 
+ * Description: Script that controls enemies
  */
 
 using System.Collections;
@@ -65,6 +66,8 @@ public class Enemy : MonoBehaviour
     // Fires the projectile prefab in the direction of the targetObject
     void FireProjectile()
     {
+        if(targetObject == null) { return; } //if there is no target don't fire and stop invoking fire
+
         if(hasProjectile && projectile != null) //if it is supposed to shoot and has something to shoot
         {
             GameObject projObj = Instantiate(projectile);
@@ -72,18 +75,11 @@ public class Enemy : MonoBehaviour
 
             projObj.transform.position = transform.position;
             Vector3 targetPos;
-
-            if (targetObject != null)
-            {
-                targetPos = targetObject.transform.position - transform.position;
-                targetPos.Normalize();
-                targetPos = targetPos * projectileSpeed;
-            }
-            else
-            {
-                targetPos = Vector3.down * projectileSpeed;
-            }
-
+            
+            targetPos = targetObject.transform.position - transform.position;
+            targetPos.Normalize();
+            targetPos = targetPos * projectileSpeed;
+            
             projRB.velocity = targetPos;
         }
     }
