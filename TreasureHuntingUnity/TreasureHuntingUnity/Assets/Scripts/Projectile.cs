@@ -5,13 +5,21 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     // Start is called before the first frame update
+
+
+    ObjectPool pool;
+
+    private void Start()
+    {
+        pool = ObjectPool.POOL;
+    }
     void OnCollisionEnter(Collision collision)
     {
         GameObject colGO = collision.gameObject;
 
-        if(colGO.tag == "Wall")
+        if(colGO.tag == "Wall" || colGO.tag == "Door")
         {
-            Destroy(this.gameObject);
+            pool.ReturnObjects(this.gameObject);
         }
     }
 }

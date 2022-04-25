@@ -5,6 +5,15 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     // Start is called before the first frame update
+
+
+
+    ObjectPool pool;
+
+    private void Start()
+    {
+        pool = ObjectPool.POOL;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         GameObject otherGo = collision.gameObject;
@@ -12,7 +21,7 @@ public class Chest : MonoBehaviour
         if (otherGo.tag == "Bullet")
         {
             Debug.Log("Enemy hit by projectile " + otherGo.name);
-            otherGo.SetActive(false); // destroy projectile
+            pool.ReturnObjects(otherGo); // destroy projectile
             
             Destroy(gameObject);
         }
