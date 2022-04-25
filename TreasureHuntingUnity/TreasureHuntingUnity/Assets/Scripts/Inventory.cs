@@ -69,16 +69,7 @@ public class Inventory : MonoBehaviour
     // }
 
 
-    public void OnTriggerEnter(Collider collision)
-    {
-        if (collision.CompareTag("Item"))
-        {
-            numItems++;
-            itemName = collision.name;
-            Items.Add(collision);
-            Destroy(collision.gameObject);
-        }
-    }
+    
     
     void Start()
      {
