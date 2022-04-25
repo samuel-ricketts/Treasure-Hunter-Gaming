@@ -182,6 +182,9 @@ public class GameManager : MonoBehaviour
     {
         //SET ALL GAME LEVEL VARIABLES FOR START OF GAME
 
+
+        Player.health = 3;
+        Player.setPlayer();
         gameLevelsCount = 1; //set the count for the game levels
         loadLevel = gameLevelsCount - 1; //the level from the array
         SceneManager.LoadScene(gameLevels[loadLevel]); //load first game level

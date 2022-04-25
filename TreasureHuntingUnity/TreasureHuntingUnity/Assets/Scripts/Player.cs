@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
 
     ObjectPool pool;
     GameManager gm;
-    private static int health = 3;
+    public static int health = 3;
 
-    private Rigidbody playerRigidbody;
+    public Rigidbody playerRigidbody;
 
     [Header("Hero Movement")]
     public float speed = 10;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         
         if (health <= 0)
         {
-            //gamemanager shift
+            gm.GameOver(); //gamemanager shift
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -80,6 +80,12 @@ public class Player : MonoBehaviour
     }//end Update()
 
 
+
+    public void setPlayer()
+    {
+        Vector3 pos = new Vector3(0f, 15.2f, 0f);
+        transform.position = pos;
+    }
     private void FireBullet(int direction)
     {
         GameObject projGo = pool.GetObject();
