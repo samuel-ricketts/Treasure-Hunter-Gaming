@@ -212,10 +212,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room-04
       objectReference: {fileID: 0}
+    - target: {fileID: 4490893618090191379, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8122922138851294621, guid: 641d666c7482a1548b1a5b139e5a580f, type: 3}
     - target: {fileID: 4490893619140396919, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 454b23ed4975cf74bb8c2236e25173b7, type: 2}
+      objectReference: {fileID: 2100000, guid: 965c78829e767467798dc2d419b1e3ef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
 --- !u!114 &458302905 stripped
@@ -704,10 +708,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room-02
       objectReference: {fileID: 0}
+    - target: {fileID: 4490893618090191379, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8122922138851294621, guid: 641d666c7482a1548b1a5b139e5a580f, type: 3}
     - target: {fileID: 4490893619140396919, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a7b3c3a5cfc6f0243bd5afeebbdfef4e, type: 2}
+      objectReference: {fileID: 2100000, guid: 965c78829e767467798dc2d419b1e3ef, type: 2}
     - target: {fileID: 5231263215046541235, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
       propertyPath: nextRoom
       value: 
@@ -773,10 +781,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room-03
       objectReference: {fileID: 0}
+    - target: {fileID: 4490893618090191379, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8122922138851294621, guid: 641d666c7482a1548b1a5b139e5a580f, type: 3}
     - target: {fileID: 4490893619140396919, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cadc3147167c2a04a8209823f51f3487, type: 2}
+      objectReference: {fileID: 2100000, guid: 965c78829e767467798dc2d419b1e3ef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
 --- !u!1001 &1708132446
@@ -994,6 +1006,22 @@ PrefabInstance:
       propertyPath: startingEnemies
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4490893618090191379, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
+      propertyPath: enemySpawnAreaWidth
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490893618090191379, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
+      propertyPath: enemySpawnAreaHeight
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490893618090191379, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8122922138851294621, guid: 641d666c7482a1548b1a5b139e5a580f, type: 3}
+    - target: {fileID: 4490893619140396919, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 965c78829e767467798dc2d419b1e3ef, type: 2}
     - target: {fileID: 5231263215046541235, guid: d20332ded0bd4a24599b5e872e771344, type: 3}
       propertyPath: nextRoom
       value: 
