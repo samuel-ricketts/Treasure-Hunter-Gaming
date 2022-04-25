@@ -17,8 +17,12 @@ public class Inventory : MonoBehaviour
      static public List<Item> Items = new List<Item>();
      public string itemName;
 
+     public static bool key1 = false;
+     public static bool key2 = false;
+     public static bool key3 = false;
+
     [Header("Items")]
-    public bool key;
+    
     public bool hasMeleeWeapon;
     public bool hasGun;
 
@@ -74,7 +78,7 @@ public class Inventory : MonoBehaviour
     void Start()
      {
         ammo = 0;
-        key = false;
+        
         hasMeleeWeapon = false;
         hasGun = false;
      }
@@ -116,7 +120,7 @@ public class Inventory : MonoBehaviour
             }
             if (itemName == "Key")
             {
-                key = true;
+
             }
             if (itemName == "MeleeWeapon")
             {
@@ -130,10 +134,7 @@ public class Inventory : MonoBehaviour
          }
      }
 
-    public bool checkKey()
-    {
-        return key;
-    }
+    
 
     public bool checkMelee()
     {

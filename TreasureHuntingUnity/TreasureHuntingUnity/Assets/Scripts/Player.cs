@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
 
 
     ObjectPool pool;
+    GameManager gm;
+    private static int health = 3;
+
     private Rigidbody playerRigidbody;
 
     [Header("Hero Movement")]
@@ -26,21 +29,21 @@ public class Player : MonoBehaviour
     void Start()
     {
         pool = ObjectPool.POOL;
+        gm = GameManager.GM;
+        
         playerRigidbody = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // float xAxis = Input.GetAxis("Horizontal");  //horizontal axis
-        // float yAxis = Input.GetAxis("Vertical");    //vertical axis
-        // Vector3 vel = playerRigidbody.velocity; //vector for position
-        // vel.x += xAxis * speed * Time.deltaTime; //adjust x position
-        // vel.y += yAxis * speed * Time.deltaTime;
-        // playerRigidbody.velocity = vel;//adjusts y position
-         //updated position
         
         
+        if (health <= 0)
+        {
+            //gamemanager shift
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             FireBullet();//fires
@@ -60,6 +63,37 @@ public class Player : MonoBehaviour
             rb.velocity = Vector3.up * bulletSpeed;
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject otherGo = collision.gameObject;
+
+        if (otherGo.tag == "Key1")
+        {
+
+            Inventory.key1 = true;
+            Destroy(otherGo);
+        }
+        if (otherGo.tag == "Key2")
+        {
+            Inventory.key2 = true;
+
+            Destroy(otherGo);
+        }
+        if (otherGo.tag == "Key3")
+        {
+            Inventory.key3 = true;
+
+            Destroy(otherGo);
+        }
+
+
+        if (otherGo.tag == "Enemy")
+        {
+            Destroy(otherGo);
+            health--;
+        }
     }
 }
 

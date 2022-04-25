@@ -65,7 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7021100235891736755, guid: 9ecd57122805584469cb80609499192c, type: 3}
       propertyPath: m_Name
-      value: Skeleton_Dead_Laying_LODG_OldBone
+      value: Skeleton_Dead_Laying_LODG_OldBone Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7021100235891736755, guid: 9ecd57122805584469cb80609499192c, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ecd57122805584469cb80609499192c, type: 3}
