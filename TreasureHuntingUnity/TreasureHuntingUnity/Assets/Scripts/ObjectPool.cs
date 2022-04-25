@@ -64,10 +64,12 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetObject()
     {
+        Debug.Log("Getting object");
         if (projectiles.Count > 0)
         {
             GameObject gObject = projectiles.Dequeue();
             gObject.SetActive(true);
+            Debug.Log("Object gotten");
             return gObject;
         }
         else

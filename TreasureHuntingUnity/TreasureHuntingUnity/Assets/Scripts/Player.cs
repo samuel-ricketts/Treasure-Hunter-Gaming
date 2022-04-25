@@ -45,7 +45,6 @@ public class Player : MonoBehaviour
             gm.GameOver(); //gamemanager shift
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
 
         // float xAxis = Input.GetAxis("Horizontal");  //horizontal axis
         // float yAxis = Input.GetAxis("Vertical");    //vertical axis
@@ -58,6 +57,7 @@ public class Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            Debug.Log("Up pressed");
             FireBullet(0);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
             Rigidbody rb = projGo.GetComponent<Rigidbody>();
             if(direction == 0)
             {
+                Debug.Log("firing up");
                 rb.velocity = Vector3.up * bulletSpeed;
             } 
             else if(direction == 1)
