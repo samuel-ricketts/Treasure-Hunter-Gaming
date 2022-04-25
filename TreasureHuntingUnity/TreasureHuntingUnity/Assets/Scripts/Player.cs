@@ -32,12 +32,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xAxis = Input.GetAxis("Horizontal");  //horizontal axis
-        float yAxis = Input.GetAxis("Vertical");    //vertical axis
-        Vector3 vel = playerRigidbody.velocity; //vector for position
-        vel.x += xAxis * speed * Time.deltaTime; //adjust x position
-        vel.y += yAxis * speed * Time.deltaTime;
-        playerRigidbody.velocity = vel;//adjusts y position
+        // float xAxis = Input.GetAxis("Horizontal");  //horizontal axis
+        // float yAxis = Input.GetAxis("Vertical");    //vertical axis
+        // Vector3 vel = playerRigidbody.velocity; //vector for position
+        // vel.x += xAxis * speed * Time.deltaTime; //adjust x position
+        // vel.y += yAxis * speed * Time.deltaTime;
+        // playerRigidbody.velocity = vel;//adjusts y position
          //updated position
         
         
