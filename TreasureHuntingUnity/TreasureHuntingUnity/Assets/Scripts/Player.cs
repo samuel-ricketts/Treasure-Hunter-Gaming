@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
+
         
         
         if (health <= 0)
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
-=======
+
         // float xAxis = Input.GetAxis("Horizontal");  //horizontal axis
         // float yAxis = Input.GetAxis("Vertical");    //vertical axis
         // Vector3 vel = playerRigidbody.velocity; //vector for position
@@ -65,7 +65,6 @@ public class Player : MonoBehaviour
             FireBullet(1);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
->>>>>>> Stashed changes
         {
             FireBullet(2);
         }
