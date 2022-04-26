@@ -13,6 +13,9 @@ TagManager:
   - FinalChest
   - Enemy
   - Door
+  - Door1
+  - Door2
+  - Door3
   layers:
   - Default
   - TransparentFX
