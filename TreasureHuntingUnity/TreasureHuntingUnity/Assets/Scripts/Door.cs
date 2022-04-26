@@ -15,18 +15,21 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Room nextRoom; //holds a reference to the index of the next room
-    public int lockID = -1; //ID of the key needed to open the door, -1 for an unlocked door, 0 for not unlockable
+
+    public int keyIndex = -1; 
 
     private FollowCam fc;
+
+    private Inventory inv;
     //private Inventory inv;
 
     // Start is called before the first frame update
     void Start()
     {
         fc = FollowCam.FOLLOWCAM;
-        //inv = Inventory.INV;
+        inv = Inventory.INV;
 
-        if(lockID != 0)
+        if(keyIndex != -1)
         {
             GetComponent<BoxCollider>().isTrigger = false;
         }
@@ -48,18 +51,29 @@ public class Door : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
+    {
+        GameObject go = other.gameObject;
+
+        if (go.tag == "Player" && nextRoom != null && keyIndex != -1)
+        {
+            GetComponent<BoxCollider>().isTrigger = false;
+            Debug.Log("turning off trigger for door " + keyIndex);
+        }
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
     {
         GameObject go = collision.gameObject;
 
         if (go.tag == "Player" && nextRoom != null)
         {
-            if (lockID == -1 /*|| inv.checkKey(lockID)*/) //if the door has no lock or if the player has the key
+            if (inv.checkKey(keyIndex))
             {
                 GetComponent<BoxCollider>().isTrigger = true;
-                fc.ChangeRooms(nextRoom);
+                Debug.Log("turning on trigger for door " + keyIndex);
             }
         }
     }
-
 }

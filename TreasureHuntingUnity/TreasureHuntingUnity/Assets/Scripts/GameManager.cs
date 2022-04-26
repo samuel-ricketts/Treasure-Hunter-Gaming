@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] //Access to private variables in editor
     private Player player;
+    private Inventory inventory;
 
     [Space(10)]
     public AudioClip backgorundMusicClip;
@@ -106,9 +107,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] //to test in inspector
     private bool playerWon = false;
  
-   //reference to system time
-   private static string thisDay = System.DateTime.Now.ToString("yyyy"); //today's date as string
+    //reference to system time
+    private static string thisDay = System.DateTime.Now.ToString("yyyy"); //today's date as string
 
+
+    private FollowCam fcam;
 
     /*** MEHTODS ***/
    
@@ -126,6 +129,9 @@ public class GameManager : MonoBehaviour
         }
 
         player = Player.PLAYER;
+        inventory = Inventory.INV;
+        fcam = FollowCam.FOLLOWCAM;
+        
     }
 
     void Awake()
@@ -180,6 +186,8 @@ public class GameManager : MonoBehaviour
         playerWon = false; //set player winning condition to false
 
         player.setPlayer();
+        inventory.ResetInventory();
+        fcam.ResetPosition();
 
     }//end StartGame()
 
@@ -196,6 +204,7 @@ public class GameManager : MonoBehaviour
     //GO TO THE GAME OVER SCENE
     public void GameOver()
     {
+        fcam.ResetPosition();
         gameState = gameStates.GameOver; //set the game state to gameOver
 
        if(playerWon) { endMsg = winMessage; } else { endMsg = looseMessage; } //set the end message
@@ -222,6 +231,12 @@ public class GameManager : MonoBehaviour
         } //end if (gameLevelsCount <=  gameLevels.Length)
 
     }//end NextLevel()
+
+    public void WinGame()
+    {
+        playerWon = true;
+        GameOver();
+    }
 
     
 }

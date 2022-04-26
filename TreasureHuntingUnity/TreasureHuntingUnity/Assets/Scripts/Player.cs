@@ -17,15 +17,14 @@ public class Player : MonoBehaviour
         else
         {
             Debug.LogError("PLAYER.Awake() - Attempted to assign a second Player.PLAYER");
-
+            Destroy(this.gameObject);
         }
     }
     #endregion
 
-    public SpriteRenderer spriteRenderer;
-
-    ObjectPool pool;
-    GameManager gm;
+    private ObjectPool pool;
+    private GameManager gm;
+    private Inventory inv;
     public int health = 3;
     public int maxHealth = 3;
 
@@ -42,19 +41,24 @@ public class Player : MonoBehaviour
     public float bulletSpeed; //speed of the projectile
 
 
-    
+
+
+    void Awake()
+    {
+        CheckPLAYERIsInScene();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        CheckPLAYERIsInScene();
         pool = ObjectPool.POOL;
         gm = GameManager.GM;
-        
-        playerRigidbody = this.GetComponent<Rigidbody>();
-        this.spriteRenderer.enabled = false;
+        inv = Inventory.INV;
 
-        this.spriteRenderer = GetComponent<SpriteRenderer>();
+        playerRigidbody = this.GetComponent<Rigidbody>();
+
+        setPlayer();
+        
     }
 
     // Update is called once per frame
@@ -82,8 +86,8 @@ public class Player : MonoBehaviour
 
     public void setPlayer()
     {
-        this.spriteRenderer.enabled = true;
-        Vector3 pos = new Vector3(0f, 15.2f, 0f);
+        
+        Vector3 pos = new Vector3(0f, -15f, -3f);
         transform.position = pos;
         health = maxHealth;
     }
@@ -124,20 +128,18 @@ public class Player : MonoBehaviour
 
         if (otherGo.tag == "Key1")
         {
-
-            Inventory.key1 = true;
+            inv.addKey(0);
             Destroy(otherGo);
+            
         }
         else if (otherGo.tag == "Key2")
         {
-            Inventory.key2 = true;
-
+            inv.addKey(1);
             Destroy(otherGo);
         }
         else if (otherGo.tag == "Key3")
         {
-            Inventory.key3 = true;
-
+            inv.addKey(2);
             Destroy(otherGo);
         }
         else if (otherGo.tag == "Enemy")
@@ -149,9 +151,7 @@ public class Player : MonoBehaviour
                 gm.GameOver(); //gamemanager shift
             }
         }
-
-
-        else if (otherGo.tag == "Door1")
+        /*else if (otherGo.tag == "Door1")
         {
             if (Inventory.key1 == true)
             {
@@ -171,9 +171,36 @@ public class Player : MonoBehaviour
             {
                 otherGo.GetComponent<BoxCollider>().isTrigger = true;
             }
-        }
+        }*/
 
 
     }
+
+    /*void OnCollisionExit(Collision collision)
+    {
+        GameObject otherGo = collision.gameObject;
+
+        if (otherGo.tag == "Door1")
+        {
+            if (Inventory.key1 == true)
+            {
+                otherGo.GetComponent<BoxCollider>().isTrigger = false;
+            }
+        }
+        else if (otherGo.tag == "Door2")
+        {
+            if (Inventory.key2 == true)
+            {
+                otherGo.GetComponent<BoxCollider>().isTrigger = false;
+            }
+        }
+        else if (otherGo.tag == "Door3")
+        {
+            if (Inventory.key3 == true)
+            {
+                otherGo.GetComponent<BoxCollider>().isTrigger = false;
+            }
+        }
+    }*/
 }
 

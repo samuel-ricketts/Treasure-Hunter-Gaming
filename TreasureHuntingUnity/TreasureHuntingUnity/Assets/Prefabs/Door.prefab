@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextRoom: {fileID: 0}
-  lockID: -1
 --- !u!54 &-1687505032516407643
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@
  * Created on: 4/23/2022
  * 
  * Last Edited By: Krieger
- * Last Edited On: 4/23/2022
+ * Last Edited On: 4/25/2022
  * 
  * Description: Controls the camera and lets it follow player from room to room
  */
@@ -29,7 +29,8 @@ public class FollowCam : MonoBehaviour
         }
         else //else if FOLLOWCAM is not null send an error
         {
-            Debug.LogError("FollowCam.Awake() - Attempeted to assign second FollowCam.FOLLOWCAM"); 
+            Debug.LogError("FollowCam.Awake() - Attempeted to assign second FollowCam.FOLLOWCAM");
+            Destroy(this.gameObject);
         }
     }//end CheckFOLLOWCAMIsInScene()
     #endregion
@@ -42,6 +43,7 @@ public class FollowCam : MonoBehaviour
     private bool moving;
 
     private Rigidbody rb;
+    private Vector3 startPOS;
 
     // Start is called before the first frame update
     void Awake()
@@ -49,6 +51,7 @@ public class FollowCam : MonoBehaviour
         CheckFOLLOWCAMIsInScene();
         camZPos = transform.position.z;
         rb = GetComponent<Rigidbody>();
+        startPOS = transform.position;
     }
 
     // Update is called once per frame
@@ -92,5 +95,10 @@ public class FollowCam : MonoBehaviour
             targetPosition.z = camZPos;
             moving = true;
         }
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startPOS;
     }
 }

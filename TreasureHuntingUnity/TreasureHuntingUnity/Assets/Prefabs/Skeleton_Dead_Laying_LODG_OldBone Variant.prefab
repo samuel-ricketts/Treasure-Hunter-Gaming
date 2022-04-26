@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 8122922138851294621}
-  speed: 5
+  speed: 20
   hasProjectile: 0
   projectile: {fileID: 0}
   projectileCooldown: 2
