@@ -2,8 +2,8 @@
  * Created by: Akram Taghavi-Burrs
  * Date Created: Feb 23, 2022
  * 
- * Last Edited by: NA
- * Last Edited: Feb 23, 2022
+ * Last Edited by: Krieger
+ * Last Edited: April 25, 2022
  * 
  * Description: Basic GameManager Template
 ****/
@@ -54,21 +54,7 @@ public class GameManager : MonoBehaviour
     public bool recordHighScore = false; //is the High Score recorded
 
     [SerializeField] //Access to private variables in editor
-    private int defaultHighScore = 1000;
-    static public int highScore = 1000; // the default High Score
-    public int HighScore { get { return highScore; } set { highScore = value; } }//access to private variable highScore [get/set methods]
-
-    [Space(10)]
-    
-    //static vairables can not be updated in the inspector, however private serialized fileds can be
-    [SerializeField] //Access to private variables in editor
-    private int numberOfLives; //set number of lives in the inspector
-    static public int lives; // number of lives for player 
-    public int Lives { get { return lives; } set { lives = value; } }//access to private variable died [get/set methods]
-
-    static public int score;  //score value
-    public int Score { get { return score; } set { score = value; } }//access to private variable died [get/set methods]
-
+    private Player player;
 
     [Space(10)]
     public AudioClip backgorundMusicClip;
@@ -85,9 +71,9 @@ public class GameManager : MonoBehaviour
     public bool LevelLost { get { return levelLost; } set { levelLost = value; } } //access to private variable lostLevel [get/set methods]
 
     [Space(10)]
-    public string defaultEndMessage = "Game Over";//the end screen message, depends on winning outcome
-    public string looseMessage = "You Loose"; //Message if player looses
-    public string winMessage = "You Win"; //Message if player wins
+    public string defaultEndMessage = "The End of a Storied Career";//the end screen message, depends on winning outcome
+    public string looseMessage = "You were slain in the pursuit of fortune and fame"; //Message if player looses
+    public string winMessage = "You got the Treasure of Tseuq and decided to retire!"; //Message if player wins
     [HideInInspector] public string endMsg ;//the end screen message, depends on winning outcome
 
     [Header("SCENE SETTINGS")]
@@ -138,6 +124,8 @@ public class GameManager : MonoBehaviour
             audioSource.loop = true;
             audioSource.Play();
         }
+
+
     }
 
     void Awake()
@@ -147,9 +135,7 @@ public class GameManager : MonoBehaviour
 
         //store the current scene
         currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        
-        //Get the saved high score
-        GetHighScore();
+
 
     }//end Awake()
 
@@ -181,29 +167,14 @@ public class GameManager : MonoBehaviour
    public void StartGame()
     {
         //SET ALL GAME LEVEL VARIABLES FOR START OF GAME
+        player.setActive(true);
+        player.setPlayer();
 
-
-        Player.health = 3;
-        
         gameLevelsCount = 1; //set the count for the game levels
         loadLevel = gameLevelsCount - 1; //the level from the array
         SceneManager.LoadScene(gameLevels[loadLevel]); //load first game level
 
         gameState = gameStates.Playing; //set the game state to playing
-
-        lives = numberOfLives; //set the number of lives
-        score = 0; //set starting score
-
-        //set High Score
-        if (recordHighScore) //if we are recording highscore
-        {
-            //if the high score, is less than the default high score
-            if (highScore <= defaultHighScore)
-            {
-                highScore = defaultHighScore; //set the high score to defulat
-                PlayerPrefs.SetInt("HighScore", highScore); //update high score PlayerPref
-            }//end if (highScore <= defaultHighScore)
-        }//end  if (recordHighScore) 
 
         endMsg = defaultEndMessage; //set the end message default
 
@@ -233,7 +204,7 @@ public class GameManager : MonoBehaviour
     
     
     //GO TO THE NEXT LEVEL
-        void NextLevel()
+    void NextLevel()
     {
         nextLevel = false; //reset the next level
 
@@ -250,29 +221,5 @@ public class GameManager : MonoBehaviour
 
     }//end NextLevel()
 
-    void CheckScore()
-    { //This method manages the score on update. Right now it just checks if we are greater than the high score.
-  
-        //if the score is more than the high score
-        if (score > highScore)
-        { 
-            highScore = score; //set the high score to the current score
-           PlayerPrefs.SetInt("HighScore", highScore); //set the playerPref for the high score
-        }//end if(score > highScore)
-
-    }//end CheckScore()
-
-    void GetHighScore()
-    {//Get the saved highscore
- 
-        //if the PlayerPref alredy exists for the high score
-        if (PlayerPrefs.HasKey("HighScore"))
-        {
-            Debug.Log("Has Key");
-            highScore = PlayerPrefs.GetInt("HighScore"); //set the high score to the saved high score
-        }//end if (PlayerPrefs.HasKey("HighScore"))
-
-        PlayerPrefs.SetInt("HighScore", highScore); //set the playerPref for the high score
-    }//end GetHighScore()
-
+    
 }
