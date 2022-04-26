@@ -144,6 +144,31 @@ public class Player : MonoBehaviour
                 gm.GameOver(); //gamemanager shift
             }
         }
+
+
+        else if (otherGo.tag == "Door1")
+        {
+            if (Inventory.key1 == true)
+            {
+                otherGo.GetComponent<BoxCollider>().isTrigger = true;
+            }
+        }
+        else if (otherGo.tag == "Door2")
+        {
+            if (Inventory.key2 == true)
+            {
+                otherGo.GetComponent<BoxCollider>().isTrigger = true;
+            }
+        }
+        else if (otherGo.tag == "Door3")
+        {
+            if (Inventory.key3 == true)
+            {
+                otherGo.GetComponent<BoxCollider>().isTrigger = true;
+            }
+        }
+
+
     }
 }
 
