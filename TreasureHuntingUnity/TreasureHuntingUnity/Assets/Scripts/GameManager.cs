@@ -153,12 +153,12 @@ public class GameManager : MonoBehaviour
         if (gameState == gameStates.Playing)
         {
             //if we have died and have no more lives, go to game over
-            if (levelLost && (lives == 0)) { GameOver(); }
+            
 
         }//end if (gameState == gameStates.Playing)
 
         //Check Score
-        CheckScore();
+        
 
     }//end Update
 
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
    public void StartGame()
     {
         //SET ALL GAME LEVEL VARIABLES FOR START OF GAME
-        player.setActive(true);
+        player.gameObject.SetActive(true);
         player.setPlayer();
 
         gameLevelsCount = 1; //set the count for the game levels

@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         gm = GameManager.GM;
         
         playerRigidbody = this.GetComponent<Rigidbody>();
-        setActive(false);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
