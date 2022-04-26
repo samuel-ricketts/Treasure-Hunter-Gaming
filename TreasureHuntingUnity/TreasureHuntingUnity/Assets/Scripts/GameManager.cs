@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
             audioSource.Play();
         }
 
-
+        player = Player.PLAYER;
     }
 
     void Awake()
@@ -136,9 +136,10 @@ public class GameManager : MonoBehaviour
         //store the current scene
         currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
+        
+
 
     }//end Awake()
-
 
     // Update is called once per frame
     private void Update()
@@ -167,9 +168,7 @@ public class GameManager : MonoBehaviour
    public void StartGame()
     {
         //SET ALL GAME LEVEL VARIABLES FOR START OF GAME
-        player.gameObject.SetActive(true);
-        player.setPlayer();
-
+        
         gameLevelsCount = 1; //set the count for the game levels
         loadLevel = gameLevelsCount - 1; //the level from the array
         SceneManager.LoadScene(gameLevels[loadLevel]); //load first game level
@@ -179,6 +178,9 @@ public class GameManager : MonoBehaviour
         endMsg = defaultEndMessage; //set the end message default
 
         playerWon = false; //set player winning condition to false
+
+        player.setPlayer();
+
     }//end StartGame()
 
 

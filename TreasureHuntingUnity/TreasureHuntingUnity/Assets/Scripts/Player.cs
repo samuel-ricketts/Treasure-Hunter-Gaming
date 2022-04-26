@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    public SpriteRenderer spriteRenderer;
+
     ObjectPool pool;
     GameManager gm;
     public int health = 3;
@@ -50,7 +52,9 @@ public class Player : MonoBehaviour
         gm = GameManager.GM;
         
         playerRigidbody = this.GetComponent<Rigidbody>();
-        gameObject.SetActive(false);
+        this.spriteRenderer.enabled = false;
+
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -78,6 +82,7 @@ public class Player : MonoBehaviour
 
     public void setPlayer()
     {
+        this.spriteRenderer.enabled = true;
         Vector3 pos = new Vector3(0f, 15.2f, 0f);
         transform.position = pos;
         health = maxHealth;
