@@ -92,7 +92,7 @@ public class Room : MonoBehaviour
             if (currentEnemies.Count < maxEnemies)
             {
                 Vector3 enemyPos = transform.position;
-                enemyPos.z = 0;
+                enemyPos.z = -10;
                 enemyPos.x += Random.Range(-enemySpawnAreaWidth, enemySpawnAreaWidth);
                 enemyPos.y += Random.Range(-enemySpawnAreaHeight, enemySpawnAreaHeight);
 

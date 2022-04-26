@@ -15,6 +15,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     /**Variables**/
+    ObjectPool pool;
     [SerializeField]
     private GameObject targetObject; //reference to the object the enemy will be targeting, generally the player
 
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        pool = ObjectPool.POOL;
     }
 
     // Update is called once per frame
@@ -81,6 +83,19 @@ public class Enemy : MonoBehaviour
             targetPos = targetPos * projectileSpeed;
             
             projRB.velocity = targetPos;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject otherGo = collision.gameObject;
+
+        if (otherGo.tag == "Bullet")
+        {
+            Debug.Log("Enemy hit by projectile " + otherGo.name);
+            pool.ReturnObjects(otherGo); // destroy projectile
+
+            Destroy(gameObject);
         }
     }
 }
