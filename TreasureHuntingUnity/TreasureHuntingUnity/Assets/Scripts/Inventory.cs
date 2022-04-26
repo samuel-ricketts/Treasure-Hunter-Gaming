@@ -78,12 +78,12 @@ public class Inventory : MonoBehaviour
     
     
     void Start()
-        {
+    {
         ammo = 0;
         
         hasMeleeWeapon = false;
         hasGun = false;
-        }
+    }
 
     public void ResetInventory()
     {
@@ -95,7 +95,7 @@ public class Inventory : MonoBehaviour
 
     public Item GetItem(int id)
     {
-    return Items.Find(x => x.id == id);
+        return Items.Find(x => x.id == id);
     }
 
     public Item GetItem(string title)
@@ -118,31 +118,31 @@ public class Inventory : MonoBehaviour
             };
         }
 
-        public void OnTriggerEnter(Collider collision)
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Item"))
         {
-            if (collision.CompareTag("Item"))
-            {
-                itemName = collision.name;
+            itemName = collision.name;
              
-                if(itemName == "Ammo")
-            {
-                ammo += 10;
-            }
-            if (itemName == "Key")
-            {
-
-            }
-            if (itemName == "MeleeWeapon")
-            {
-                hasMeleeWeapon = true;
-            }
-            if (itemName == "Gun")
-            {
-                hasGun = true;
-            }
-                Destroy(collision.gameObject);
-            }
+            if(itemName == "Ammo")
+        {
+            ammo += 10;
         }
+        if (itemName == "Key")
+        {
+
+        }
+        if (itemName == "MeleeWeapon")
+        {
+            hasMeleeWeapon = true;
+        }
+        if (itemName == "Gun")
+        {
+            hasGun = true;
+        }
+            Destroy(collision.gameObject);
+        }
+    }
 
     
 
